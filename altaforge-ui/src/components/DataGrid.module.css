@@ -1,0 +1,48 @@
+.wrapper {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+
+  --ag-border-color: rgba(0, 0, 0, 0.12);
+  --ag-background-color: transparent;
+  --ag-font-size: 14px;
+  --ag-header-background-color: transparent;
+  --ag-header-font-weight: bold;
+  --ag-wrapper-border: none;
+  --ag-wrapper-border-radius: 0;
+  --ag-range-selection-border-color: transparent;
+  --ag-input-focus-border-color: var(--accent-9);
+  --ag-header-height: 44px;
+  --ag-row-height: 56px;
+  --ag-icon-color: var(--cyan-9);
+}
+
+.wrapper :global(.ag-root-wrapper),
+.wrapper :global(.ag-body),
+.wrapper :global(.ag-row) {
+  background-color: transparent;
+}
+
+.wrapper :global([class*="ag-theme-"]) {
+  --ag-row-hover-color: var(--accent-a2);
+}
+
+/* Constrain width so wide column totals don't make the ScrollArea viewport scroll horizontally. */
+.dataGridBody {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.dataGridBody :global(.ag-header) {
+  display: none;
+}
+
+/* Filter menus are rendered at popupParent (.radix-themes) outside this wrapper,
+   so they don't inherit wrapper-scoped variables. These selectors target them globally. */
+:global(.ag-menu),
+:global(.ag-select-list) {
+  background-color: #f9f9fb;
+}

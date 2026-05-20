@@ -1,0 +1,35 @@
+.iconButton {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background-color: var(--accent-3);
+  color: var(--accent-9);
+  border-radius: var(--radius-2);
+  z-index: 1;
+}
+
+.tooltipContent {
+  background: #1f2937;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-width: 240px;
+}
+
+.tooltipTitle {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.tooltipValue {
+  font-size: 12px;
+  color: #d1d5db;
+}
+
+.tooltipArrow {
+  fill: #1f2937;
+}

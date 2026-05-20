@@ -1,0 +1,174 @@
+.popover {
+  background: var(--color-background);
+  box-shadow: var(--shadow-5);
+  padding: 16px;
+  z-index: 300;
+  width: 460px;
+}
+
+.layout {
+  display: flex;
+  gap: 16px;
+  font-family: sans-serif;
+}
+
+.calendarSection {
+  flex: 0 0 auto;
+}
+
+.shortcutsSection {
+  flex: 0 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.shortcutButton:global(.rt-BaseButton) {
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--gray-12);
+  justify-content: center;
+}
+
+.shortcutButton:global(.rt-BaseButton).shortcutSelected {
+  border: 1px solid transparent;
+  outline: 2px solid var(--accent-9);
+  outline-offset: -2px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  height: 32px;
+  user-select: none;
+}
+
+:global(.rt-BaseButton).day {
+  all: unset;
+  font-size: var(--font-size-1);
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  width: var(--space-6);
+  height: var(--space-6);
+  background-color: transparent;
+  color: var(--gray-12);
+}
+
+:global(.rt-BaseButton).day.selected {
+  background-color: var(--accent-9);
+  color: white;
+  border-radius: 9999px;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]) {
+  position: relative;
+  color: var(--gray-12);
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled])::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  background-color: var(--accent-3);
+  z-index: -1;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]):not(.rangeStart):not(.rangeEnd)::before {
+  left: -20px;
+  right: -20px;
+  border-radius: 0;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]):not(.rangeStart):not(
+    .rangeEnd
+  ).monthStart::before {
+  left: 0;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]):not(.rangeStart):not(
+    .rangeEnd
+  ).monthEnd::before {
+  right: 0;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]).rangeStart::before {
+  left: 0;
+  right: -20px;
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]).rangeStart.monthEnd::before {
+  right: 0;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]).rangeEnd::before {
+  left: -20px;
+  right: 0;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
+:global(.rt-BaseButton).day.inRange:not(.selected):not([disabled]).rangeEnd.monthStart::before {
+  left: 0;
+}
+
+:global(.rt-BaseButton).day.today:not(.selected):not(.inRange):not([disabled]) {
+  background-color: rgba(0, 0, 51, 0.06);
+  border-radius: 9999px;
+}
+
+:global(.rt-BaseButton).day:not(.inRange):not(.today):not(.selected):not([disabled]):hover {
+  background-color: var(--accent-3);
+}
+
+:global(.rt-BaseButton).day[disabled] {
+  color: var(--gray-6);
+}
+
+.day:global(.rt-BaseButton:where(.rt-variant-soft):where(:focus-visible)) {
+  outline: 2px solid var(--accent-10);
+  outline-offset: -2px;
+}
+
+.empty {
+  /* empty cell placeholder */
+}
+
+/* Inline styles extracted from TSX */
+.triggerButton {
+  composes: triggerButton from './datePickerShared.module.css';
+}
+
+.calendarIcon {
+  composes: calendarIcon from './datePickerShared.module.css';
+}
+
+.triggerText {
+  composes: triggerText from './datePickerShared.module.css';
+}
+
+.chevronIcon {
+  composes: chevronIcon from './datePickerShared.module.css';
+}

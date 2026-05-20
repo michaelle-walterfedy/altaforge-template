@@ -1,0 +1,95 @@
+.popover {
+  background: var(--color-background);
+  box-shadow: var(--shadow-5);
+  padding: 16px;
+  z-index: 300;
+  width: auto;
+  min-width: 280px;
+  font-family: sans-serif;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  height: 32px;
+  user-select: none;
+}
+
+:global(.rt-BaseButton).day {
+  all: unset;
+  font-size: var(--font-size-1);
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  width: var(--space-6);
+  height: var(--space-6);
+  background-color: transparent;
+  color: var(--gray-12);
+}
+
+:global(.rt-BaseButton).day.selected {
+  background-color: var(--accent-9);
+  color: white;
+  border-radius: 9999px;
+}
+
+:global(.rt-BaseButton).day.today:not(.selected):not([disabled]) {
+  background-color: rgba(0, 0, 51, 0.06);
+  border-radius: 9999px;
+}
+
+:global(.rt-BaseButton).day:not(.today):not(.selected):not([disabled]):hover {
+  background-color: var(--accent-3);
+}
+
+:global(.rt-BaseButton).day[disabled] {
+  color: var(--gray-6);
+}
+
+.day:global(.rt-BaseButton:where(.rt-variant-soft):where(:focus-visible)) {
+  outline: 2px solid var(--accent-10);
+  outline-offset: -2px;
+}
+
+.empty {
+  /* empty cell placeholder */
+}
+
+/* Inline styles extracted from TSX */
+.triggerButton {
+  composes: triggerButton from './datePickerShared.module.css';
+}
+
+.calendarIcon {
+  composes: calendarIcon from './datePickerShared.module.css';
+}
+
+.triggerText {
+  composes: triggerText from './datePickerShared.module.css';
+}
+
+.chevronIcon {
+  composes: chevronIcon from './datePickerShared.module.css';
+}

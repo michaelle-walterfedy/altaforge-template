@@ -1,0 +1,50 @@
+name: Publish Stories
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: write
+
+jobs:
+  publish-stories:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Override npm registry for CI
+        run: |
+          rm -f .npmrc package-lock.json
+          echo "registry=https://registry.npmjs.org/" > .npmrc
+          npm config set registry https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Prepare stories.json
+        run: cp storybook-static/index.json stories.json
+
+      - name: Delete existing release and tag
+        run: gh release delete storybook-stories --yes --cleanup-tag || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish stories.json as GitHub Release asset
+        run: |
+          gh release create storybook-stories stories.json \
+            --title "Storybook Stories" \
+            --notes "Auto-generated component/story index. Updated on every merge to dev."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

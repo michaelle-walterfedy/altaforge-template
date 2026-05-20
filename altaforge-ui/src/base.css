@@ -1,0 +1,51 @@
+/* ── AltaForge UI — Global Overrides ──────────────────────────
+   Import after Radix theme styles:
+     import "altaforge-ui/themes/styles.css";
+     import "altaforge-ui/base.css";
+   ──────────────────────────────────────────────────────────── */
+
+/* ── Custom tokens ─────────────────────────────────────────── */
+
+.radix-themes {
+  --icon-size: var(--space-4);
+  --white: #ffffff; /* always pure white — intentional for chart elements that must stay white in both light and dark themes */
+  --chart-gradient-stop: var(--accent-9);
+}
+
+/* ── Body reset ────────────────────────────────────────────── */
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ─────────────────────────────────────────────────── */
+
+*:focus-visible {
+  outline: 2px solid var(--focus-8);
+  outline-offset: -1px;
+}
+
+/* ── Card: remove translucent blur ─────────────────────────── */
+
+.rt-Card.rt-BaseCard:where(.rt-variant-surface)::before {
+  backdrop-filter: none;
+}
+
+/* ── ScrollArea: transparent scrollbar track ────────────────── */
+
+.rt-ScrollAreaRoot .rt-ScrollAreaScrollbar {
+  background-color: transparent;
+}
+
+/* ── Table: tighter defaults ───────────────────────────────── */
+
+.rt-TableRoot {
+  font-size: var(--font-size-1);
+}
+
+.rt-TableHeader .rt-TableCell {
+  font-weight: 500;
+  color: var(--gray-10);
+}

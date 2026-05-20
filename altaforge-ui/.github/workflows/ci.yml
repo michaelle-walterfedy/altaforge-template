@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Override npm registry for CI
+        run: |
+          rm -f .npmrc package-lock.json
+          echo "registry=https://registry.npmjs.org/" > .npmrc
+          npm config set registry https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run type check
+        run: npm run typecheck
+
+      - name: Check formatting
+        run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,json,md}" || (echo "Code is not formatted. Run 'npm run format' to fix." && exit 1)
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Override npm registry for CI
+        run: |
+          rm -f .npmrc package-lock.json
+          echo "registry=https://registry.npmjs.org/" > .npmrc
+          npm config set registry https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Check build artifacts
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Build failed: dist directory not found"
+            exit 1
+          fi
+          if [ ! -f "dist/themes.js" ] || [ ! -f "dist/themes.mjs" ] || [ ! -f "dist/charts.js" ] || [ ! -f "dist/charts.mjs" ]; then
+            echo "Build failed: required files missing"
+            exit 1
+          fi
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Override npm registry for CI
+        run: |
+          rm -f .npmrc package-lock.json
+          echo "registry=https://registry.npmjs.org/" > .npmrc
+          npm config set registry https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: make test-ci
+

@@ -1,0 +1,84 @@
+.navItem {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0;
+  padding-left: var(--space-2);
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.navItem:not([disabled]):hover {
+  background-color: var(--accent-a2);
+  transition: background-color 0.075s ease-in-out;
+  cursor: pointer;
+}
+
+.navItem:not([disabled]).active {
+  background-color: var(--accent-4);
+  transition: background-color 0.075s ease-in-out;
+}
+
+.navItem[disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.nested {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.icon {
+  width: var(--space-4);
+  height: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.iconHidden {
+  opacity: 0;
+}
+
+.label {
+  display: block;
+  position: absolute;
+  right: var(--space-2);
+  opacity: 0;
+  text-align: left;
+  pointer-events: none;
+}
+
+.rightIcon {
+  position: absolute;
+  right: var(--space-2);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+@keyframes navFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animateIn {
+  opacity: 0;
+  animation: navFadeIn 0.15s ease-out forwards;
+  animation-delay: 0.1s;
+  pointer-events: auto;
+}

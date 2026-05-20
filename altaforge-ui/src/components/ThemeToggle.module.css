@@ -1,0 +1,19 @@
+.toggleButton {
+  cursor: pointer;
+  color: var(--gray-11);
+}
+
+.toggleButton:hover {
+  color: var(--accent-9);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}

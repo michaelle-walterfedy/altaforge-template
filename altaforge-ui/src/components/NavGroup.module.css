@@ -1,0 +1,15 @@
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.childrenContainer {
+  margin-left: var(--space-4);
+}
+
+.guideLines {
+  box-shadow: inset 1px 0 0 var(--accent-4);
+}

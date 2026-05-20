@@ -1,0 +1,47 @@
+.triggerButton {
+  box-shadow: 0px 0px 0px 1px var(--gray-5);
+  color: var(--color-gray-10);
+  justify-content: space-between;
+}
+
+.triggerText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  text-align: left;
+}
+
+.chevronIcon {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.item:global(.rt-DropdownMenuItem) {
+  color: var(--gray-12);
+}
+
+.item:global(.rt-DropdownMenuItem):hover,
+.item:global(.rt-DropdownMenuItem):focus {
+  background-color: var(--accent-9);
+  color: white;
+}
+
+.checkbox {
+  width: var(--space-4);
+  height: var(--space-4);
+  border: 1px solid var(--gray-5);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.checkIcon {
+  width: 8px;
+  height: 8px;
+  color: var(--gray-12);
+}

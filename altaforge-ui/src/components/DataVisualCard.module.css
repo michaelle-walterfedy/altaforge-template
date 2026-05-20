@@ -1,0 +1,10 @@
+.card {
+  backdrop-filter: none;
+}
+
+.chartContainer {
+  margin-top: var(--space-5);
+  height: 400px;
+  min-width: 0;
+  overflow: hidden;
+}

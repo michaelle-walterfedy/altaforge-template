@@ -1,0 +1,27 @@
+.triggerButton {
+  box-shadow: 0px 0px 0px 1px var(--gray-5);
+  color: var(--color-gray-10);
+  min-width: 200px;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.calendarIcon {
+  width: var(--space-4);
+  height: var(--space-4);
+  flex-shrink: 0;
+}
+
+.triggerText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  text-align: left;
+}
+
+.chevronIcon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}

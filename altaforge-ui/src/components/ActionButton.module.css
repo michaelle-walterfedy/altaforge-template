@@ -1,0 +1,59 @@
+.button:global(.rt-BaseButton) {
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.button:global(.rt-BaseButton) img {
+  display: block;
+  width: var(--base-button-height);
+  height: var(--base-button-height);
+  object-fit: contain;
+  border-radius: var(--radius-1);
+}
+
+.button:global(.rt-BaseButton):global(.rt-variant-ghost) {
+  height: var(--base-button-height);
+  width: var(--base-button-height);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-ghost) {
+  background-color: var(--accent-3);
+  color: var(--accent-11);
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-ghost):hover {
+  background-color: var(--accent-4);
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-soft) {
+  background-color: var(--accent-9);
+  color: white;
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-soft):hover {
+  background-color: var(--accent-10);
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-outline) {
+  background-color: var(--accent-3);
+  border-color: var(--accent-9);
+  color: var(--accent-11);
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-outline):hover {
+  background-color: var(--accent-4);
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-solid) {
+  background-color: var(--accent-10);
+  color: white;
+}
+
+.active:global(.rt-BaseButton):global(.rt-variant-solid):hover {
+  background-color: var(--accent-11);
+}

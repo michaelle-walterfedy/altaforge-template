@@ -1,0 +1,3 @@
+npm run format -- --cache
+npm run lint
+git diff --name-only | xargs -r git add
