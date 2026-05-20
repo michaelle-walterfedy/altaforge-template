@@ -1,0 +1,1 @@
+# altaforge-template
